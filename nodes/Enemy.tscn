@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5wov51eu5ovb"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_3mrba"]
+[ext_resource type="Texture2D" uid="uid://drtbjxbusmph2" path="res://assets/Enemy Assets/Tilesheet_Enemy_Bunny_Left-Facing_Back_Walking_32x32.png" id="2_7cr6m"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_3mrba")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7cr6m")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 24)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
