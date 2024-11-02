@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://35whdovamw5y"]
+
+[ext_resource type="Texture2D" uid="uid://b5frjdqbr3cjj" path="res://assets/Map Assets/CursorTile_x32.png" id="1_41g1r"]
+[ext_resource type="Script" path="res://scripts/Cursor.gd" id="1_idlmd"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_idlmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_41g1r")

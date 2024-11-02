@@ -11,16 +11,21 @@ script = ExtResource("1_a2h0x")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
+texture_filter = 1
 tile_set = ExtResource("1_u230f")
 format = 2
 layer_0/name = "Ground"
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(-1, 0, 0, 0, 0, 0, 65536, 0, 0, 65535, 0, 0, 131070, 0, 0, 196607, 0, 0, 131071, 0, 0, 131072, 0, 0, 262143, 0, 0, 262144, 0, 0, 196608, 0, 0, 131073, 0, 0, 196606, 0, 0, 262142, 0, 0, 327679, 0, 0, 393215, 0, 0, 262141, 0, 0, 327678, 0, 0, 393214, 0, 0, 458751, 0, 0, 524287, 0, 0, 393216, 0, 0, 327680, 0, 0, 262145, 0, 0, 196609, 0, 0)
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, 0, 0, 0, 65536, 0, 0, 65535, 0, 0, 131070, 0, 0, 196607, 0, 0, 131071, 0, 0, 131072, 0, 0, 262143, 0, 0, 131073, 0, 0, 196606, 0, 0, 262142, 0, 0, 327679, 0, 0, 262141, 0, 0, 327678, 0, 0, 393214, 0, 0, 458751, 0, 0, 524287, 0, 0, 196609, 0, 0, 524288, 0, 0, 589824, 0, 0, 524289, 0, 0, 458753, 0, 0, 393218, 0, 0, 327682, 0, 0, 262146, 0, 0)
 layer_1/name = "Water"
 layer_1/y_sort_enabled = true
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(327681, 327685, 0, 262145, 327685, 0, 196608, 327685, 0, 262144, 327685, 0, 393215, 327685, 0, 393216, 327685, 0, 458752, 327685, 0, 393217, 327685, 0, 327680, 327685, 0)
 script = ExtResource("3_045cm")
 
 [node name="Enemy" parent="." instance=ExtResource("4_7e3nh")]
 
 [node name="Player" parent="." instance=ExtResource("5_w3sm3")]
+position = Vector2(0, 32)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)

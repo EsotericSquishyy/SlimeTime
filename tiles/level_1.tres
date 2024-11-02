@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://iny4a0gpjkej"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://iny4a0gpjkej"]
 
 [ext_resource type="Texture2D" uid="uid://bcaxpysfu7pub" path="res://assets/Map Assets/TileSheet_FullGrass_32x32.png" id="1_legow"]
 [ext_resource type="Texture2D" uid="uid://bn41myjfy66c8" path="res://assets/Map Assets/TileSheet_Half_FullGrass_32x32.png" id="2_li2kl"]
 [ext_resource type="Texture2D" uid="uid://chi7cnbgpg3qm" path="res://assets/Map Assets/TileSheet_Slime_Trail_32x32.png" id="3_im741"]
+[ext_resource type="Texture2D" uid="uid://b75edfpowaqr3" path="res://assets/Map Assets/Tile_ss_x32.png" id="4_en03t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_er4dn"]
 texture = ExtResource("1_legow")
@@ -19,10 +20,14 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ibmi8"]
 texture = ExtResource("2_li2kl")
 texture_region_size = Vector2i(32, 24)
-0:0/0 = 0
 1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -4)
 2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -4)
 3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -4)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g4nky"]
 texture = ExtResource("3_im741")
@@ -31,9 +36,24 @@ texture = ExtResource("3_im741")
 0:1/0 = 0
 1:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtg1e"]
+texture = ExtResource("4_en03t")
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(32, 24)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -12)
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -12)
+4:0/0 = 0
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -12)
+0:0/0 = 0
+
 [resource]
 tile_shape = 1
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_er4dn")
 sources/1 = SubResource("TileSetAtlasSource_ibmi8")
 sources/2 = SubResource("TileSetAtlasSource_g4nky")
+sources/5 = SubResource("TileSetAtlasSource_dtg1e")
