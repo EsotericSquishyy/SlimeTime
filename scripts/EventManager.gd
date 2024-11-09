@@ -25,6 +25,9 @@ func _process(_delta):
 
 func handle_player_phase():
     # ...
+    var cursor_pos = $TileMap.get_cursor_pos()
+    $Cursor.position = cursor_pos
+
     current_state = GameState.ANIM_PLAYER
 
 func handle_animation_phase():

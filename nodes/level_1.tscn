@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5pi1hl3t1ib"]
+[gd_scene load_steps=7 format=3 uid="uid://b5pi1hl3t1ib"]
 
 [ext_resource type="Script" path="res://scripts/EventManager.gd" id="1_a2h0x"]
 [ext_resource type="TileSet" uid="uid://iny4a0gpjkej" path="res://tiles/level_1.tres" id="1_u230f"]
+[ext_resource type="PackedScene" uid="uid://35whdovamw5y" path="res://nodes/Cursor.tscn" id="2_gsvmg"]
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="3_045cm"]
 [ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://nodes/Enemy.tscn" id="4_7e3nh"]
 [ext_resource type="PackedScene" uid="uid://b7j1ouqela6s8" path="res://nodes/Player.tscn" id="5_w3sm3"]
@@ -29,3 +30,5 @@ position = Vector2(0, 32)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="Cursor" parent="." instance=ExtResource("2_gsvmg")]
