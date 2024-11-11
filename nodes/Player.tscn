@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7j1ouqela6s8"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_t2ii4"]
-[ext_resource type="Texture2D" uid="uid://cpw7h14yi30lo" path="res://assets/Slime Assets/Normal/Tilesheet_Slime_Left-Facing_Back_32x32.png" id="2_dtnsp"]
+[ext_resource type="Texture2D" uid="uid://byt64xvkfj5k8" path="res://assets/Slime Assets/Normal/Tilesheet_Slime_Left-Facing_Back_32x32.png" id="2_dtnsp"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_t2ii4")
