@@ -6,3 +6,5 @@ enum TileType {
     Water,
     Rock
 }
+
+const TILE_OVERLAY_MASK = 1 << 7
