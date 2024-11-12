@@ -5,6 +5,7 @@ var cursor_pos : Vector2i = Vector2i(0,0)
 
 # Overlay variables
 var over_source_id = -1
+var over_half_source_id = -1
 var over_ind = -1
 var slime_ind = -1
 var over_hidden = false
@@ -27,6 +28,7 @@ func get_layer_index(layer_name: String) -> int:
 
 func _ready():
     over_source_id = get_tileset_source_id(Consts.TILESET_SOURCE_OVERLAY)
+    over_half_source_id = get_tileset_source_id(Consts.TILESET_SOURCE_OVERLAY_HALF)
     
     over_ind = get_layer_index(Consts.TILEMAP_LAYER_OVERLAY)
     slime_ind = get_layer_index(Consts.TILEMAP_LAYER_SLIME)
@@ -72,7 +74,10 @@ func _get_tile_pos(curr: Vector2i):
     ###
 
 func get_cursor_pos():
-    return to_global(map_to_local(cursor_pos))
+    if(tile_data[cursor_pos]._is_half_tile):
+        return to_global(map_to_local(cursor_pos) + Consts.CURSOR_LOCAL_HALF_TILE_OFFSET)
+    else:
+        return to_global(map_to_local(cursor_pos))
     
 func toggle_overlay():     
     over_hidden = !over_hidden
