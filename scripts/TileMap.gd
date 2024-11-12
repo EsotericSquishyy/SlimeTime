@@ -74,13 +74,13 @@ func _get_tile_pos(curr: Vector2i):
 func get_cursor_pos():
     return to_global(map_to_local(cursor_pos))
     
-func toggle_overlay():
-    if over_hidden:
-        set_layer_modulate(over_ind, Color(1,1,1,1))
-    else:
-        set_layer_modulate(over_ind, Color(1,1,1,0))
-        
+func toggle_overlay():     
     over_hidden = !over_hidden
+    
+    if over_hidden:
+        set_layer_modulate(over_ind, Color(1,1,1,0))
+    else:
+        set_layer_modulate(over_ind, Color(1,1,1,1))
 
 func _input(event):
     if Input.is_action_just_pressed("ui_accept"):
