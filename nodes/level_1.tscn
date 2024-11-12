@@ -34,11 +34,11 @@ script = ExtResource("3_045cm")
 z_index = 1
 
 [node name="Player" parent="." instance=ExtResource("5_w3sm3")]
-z_index = 2
+z_index = 1
 position = Vector2(0, 32)
+
+[node name="Cursor" parent="." instance=ExtResource("2_gsvmg")]
+z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-
-[node name="Cursor" parent="." instance=ExtResource("2_gsvmg")]
-z_index = 3

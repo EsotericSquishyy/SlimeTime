@@ -53,24 +53,24 @@ func _get_tile_pos(curr: Vector2i):
     query.position = get_global_mouse_position()
     var results = space_state.intersect_point(query)
 
-    # Search results for highest layer tile
-    var max_layer = -1
-    var temp_pos = curr
-    for result in results:
-        var tile_pos = get_coords_for_body_rid(result.rid)
-        var tile_layer = get_layer_for_body_rid(result.rid) 
+    if(results.size() > 0):
+        var temp_pos = get_coords_for_body_rid(results.front().rid)
+        
+        for result in results:
+            var tile_pos = get_coords_for_body_rid(result.rid)
+            
+            if tile_pos.x > temp_pos.x || tile_pos.y > temp_pos.y:
+                temp_pos = tile_pos
 
-        if tile_layer > max_layer:
-            temp_pos = tile_pos
-            max_layer = tile_layer
+        return temp_pos
+        
+    return curr
 
-    return temp_pos
-
-    ### Alternate version [better :)]
-    # var tile_pos = local_to_map(get_local_mouse_position())
-    # if tile_pos in tile_data:
-    #     return tile_pos
-    # return curr
+    #### Alternate version [better :)]
+     #var tile_pos = local_to_map(get_local_mouse_position())
+     #if tile_pos in tile_data:
+         #return tile_pos
+     #return curr
     ###
 
 func get_cursor_pos():
