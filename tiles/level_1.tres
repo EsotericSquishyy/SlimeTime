@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=9 format=3 uid="uid://iny4a0gpjkej"]
 
-[ext_resource type="Texture2D" uid="uid://bcaxpysfu7pub" path="res://assets/Map Assets/TileSheet_FullGrass_32x32.png" id="1_legow"]
-[ext_resource type="Texture2D" uid="uid://bn41myjfy66c8" path="res://assets/Map Assets/TileSheet_Half_FullGrass_32x32.png" id="2_li2kl"]
-[ext_resource type="Texture2D" uid="uid://cel2pd5wu0psi" path="res://assets/Map Assets/TileSheet_Slime_Pathing_32x32_New.png" id="3_uvusr"]
-[ext_resource type="Texture2D" uid="uid://b75edfpowaqr3" path="res://assets/Map Assets/Tile_ss_x32.png" id="4_en03t"]
+[ext_resource type="Texture2D" uid="uid://4vg4fgyo868r" path="res://assets/Map Assets/TileSheet_FullGrass_32x32.png" id="1_legow"]
+[ext_resource type="Texture2D" uid="uid://2qtmfvia7wpc" path="res://assets/Map Assets/TileSheet_Half_FullGrass_32x32.png" id="2_li2kl"]
+[ext_resource type="Texture2D" uid="uid://47ijvdw18wje" path="res://assets/Map Assets/TileSheet_Slime_Pathing_32x32_New.png" id="3_uvusr"]
+[ext_resource type="Texture2D" uid="uid://c7f60be83e3iw" path="res://assets/Map Assets/Tile_ss_x32.png" id="4_en03t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_er4dn"]
 resource_name = "Ground_Full"
