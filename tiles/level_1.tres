@@ -135,5 +135,5 @@ custom_data_layer_1/name = "Slimed"
 custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_er4dn")
 sources/1 = SubResource("TileSetAtlasSource_ibmi8")
-sources/5 = SubResource("TileSetAtlasSource_dtg1e")
-sources/3 = SubResource("TileSetAtlasSource_ky486")
+sources/2 = SubResource("TileSetAtlasSource_ky486")
+sources/4 = SubResource("TileSetAtlasSource_dtg1e")
