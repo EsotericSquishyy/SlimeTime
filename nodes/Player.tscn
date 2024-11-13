@@ -1,14 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7j1ouqela6s8"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_t2ii4"]
-[ext_resource type="Texture2D" uid="uid://byt64xvkfj5k8" path="res://assets/Slime Assets/Normal/Tilesheet_Slime_Left-Facing_Back_32x32.png" id="2_dtnsp"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_t2ii4"]
+[ext_resource type="SpriteFrames" uid="uid://cyt8g53sq18qy" path="res://Animations/Slime_Animations/Player_Normal.tres" id="2_necju"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_t2ii4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_dtnsp")
-offset = Vector2(0, -4)
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 24)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_necju")
+animation = &"Idle"
+autoplay = "Idle"

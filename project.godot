@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="SlimeTime"
-run/main_scene="res://nodes/level_1.tscn"
+run/main_scene="res://Nodes/Level_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [filesystem]
 
 import/blender/enabled=false
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
