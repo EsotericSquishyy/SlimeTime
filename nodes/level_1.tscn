@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5pi1hl3t1ib"]
 
-[ext_resource type="Script" path="res://scripts/EventManager.gd" id="1_a2h0x"]
-[ext_resource type="TileSet" uid="uid://iny4a0gpjkej" path="res://tiles/level_1.tres" id="1_u230f"]
-[ext_resource type="PackedScene" uid="uid://35whdovamw5y" path="res://nodes/Cursor.tscn" id="2_gsvmg"]
-[ext_resource type="Script" path="res://scripts/TileMap.gd" id="3_045cm"]
-[ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://nodes/Enemy.tscn" id="4_7e3nh"]
-[ext_resource type="PackedScene" uid="uid://b7j1ouqela6s8" path="res://nodes/Player.tscn" id="5_w3sm3"]
+[ext_resource type="Script" path="res://Scripts/EventManager.gd" id="1_y3arq"]
+[ext_resource type="TileSet" uid="uid://iny4a0gpjkej" path="res://Tiles/Level_1.tres" id="2_fswlv"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_qv0ji"]
+[ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://Nodes/Enemy.tscn" id="4_jgbvb"]
+[ext_resource type="PackedScene" uid="uid://b7j1ouqela6s8" path="res://Nodes/Player.tscn" id="5_o0ybn"]
+[ext_resource type="PackedScene" uid="uid://35whdovamw5y" path="res://Nodes/Cursor.tscn" id="6_4ninn"]
 
 [node name="Level1" type="Node"]
-script = ExtResource("1_a2h0x")
+script = ExtResource("1_y3arq")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-tile_set = ExtResource("1_u230f")
+tile_set = ExtResource("2_fswlv")
 format = 2
 layer_0/name = "Water"
 layer_0/y_sort_enabled = true
@@ -28,17 +28,17 @@ layer_2/tile_data = PackedInt32Array()
 layer_3/name = "Overlay"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array()
-script = ExtResource("3_045cm")
+script = ExtResource("3_qv0ji")
 
-[node name="Enemy" parent="." instance=ExtResource("4_7e3nh")]
+[node name="Enemy" parent="." instance=ExtResource("4_jgbvb")]
 z_index = 1
 
-[node name="Player" parent="." instance=ExtResource("5_w3sm3")]
-z_index = 2
+[node name="Player" parent="." instance=ExtResource("5_o0ybn")]
+z_index = 1
 position = Vector2(0, 32)
+
+[node name="Cursor" parent="." instance=ExtResource("6_4ninn")]
+z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-
-[node name="Cursor" parent="." instance=ExtResource("2_gsvmg")]
-z_index = 3
