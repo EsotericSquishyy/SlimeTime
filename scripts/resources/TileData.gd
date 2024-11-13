@@ -26,10 +26,10 @@ func _init(tileMap: TileMap, pos: Vector2i, layer: int):
     _slimed = tile_data.get_custom_data(Consts.TILEDATA_SLIMED)
     _is_half_tile = tile_data.get_custom_data(Consts.TILEDATA_IS_HALF_TILE)
     
-    if(_is_half_tile):
-        _over_source_id = _tileMap.over_half_source_id
-    else:
-        _over_source_id = _tileMap.over_source_id
+    #if(_is_half_tile):
+        #_over_source_id = _tileMap.over_half_source_id
+    #else:
+    _over_source_id = _tileMap.over_source_id
 
 func update_overlay():
     if _crossable:
