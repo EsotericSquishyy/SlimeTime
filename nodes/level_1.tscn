@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5pi1hl3t1ib"]
 
 [ext_resource type="Script" path="res://Scripts/EventManager.gd" id="1_y3arq"]
-[ext_resource type="TileSet" uid="uid://iny4a0gpjkej" path="res://Tiles/level_1.tres" id="2_fswlv"]
+[ext_resource type="TileSet" uid="uid://iny4a0gpjkej" path="res://Tiles/Level_1.tres" id="2_fswlv"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_qv0ji"]
 [ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://Nodes/Enemy.tscn" id="4_jgbvb"]
 [ext_resource type="PackedScene" uid="uid://b7j1ouqela6s8" path="res://Nodes/Player.tscn" id="5_o0ybn"]
