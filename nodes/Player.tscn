@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cyt8g53sq18qy" path="res://Animations/Slime_Animations/Player_Normal.tres" id="2_necju"]
 
 [node name="Player" type="Node2D"]
+z_index = 2
 script = ExtResource("1_t2ii4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

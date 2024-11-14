@@ -12,7 +12,6 @@ script = ExtResource("1_y3arq")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
-texture_filter = 1
 tile_set = ExtResource("2_fswlv")
 format = 2
 layer_0/name = "Water"
@@ -31,14 +30,11 @@ layer_3/tile_data = PackedInt32Array()
 script = ExtResource("3_qv0ji")
 
 [node name="Enemy" parent="." instance=ExtResource("4_jgbvb")]
-z_index = 1
 
 [node name="Player" parent="." instance=ExtResource("5_o0ybn")]
-z_index = 1
 position = Vector2(0, 32)
 
 [node name="Cursor" parent="." instance=ExtResource("6_4ninn")]
-z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
