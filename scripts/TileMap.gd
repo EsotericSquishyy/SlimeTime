@@ -6,7 +6,7 @@ const TILEMAP_COLLISION_LAYER = 1 << 7
 # Used for offsetting cursor for half tiles
 const CURSOR_LOCAL_HALF_TILE_OFFSET = Vector2(0, 8)
 
-# Overlay layer names
+# Overlay layer and tileset source names
 const TILEMAP_LAYER_SLIME = "Slime"
 const TILEMAP_LAYER_OVERLAY = "Overlay"
 const TILESET_SOURCE_OVERLAY = "Overlay"

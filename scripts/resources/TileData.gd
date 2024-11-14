@@ -2,7 +2,7 @@ extends Resource
 
 class_name TileVals
 
-# Overlay tileset atlas coords
+# Overlay tileset source atlas coords
 const TILESET_OVERLAY_UNCROSSABLE = Vector2i(1, 0)
 const TILESET_OVERLAY_CROSSABLE = Vector2i(2, 0)
 const TILESET_OVERLAY_SLIMED = Vector2i(3, 0)
