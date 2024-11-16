@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7j1ouqela6s8"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_t2ii4"]
+[ext_resource type="SpriteFrames" uid="uid://cyt8g53sq18qy" path="res://Animations/Slime_Animations/Player_Normal.tres" id="2_necju"]
+
+[node name="Player" type="Node2D"]
+z_index = 2
+script = ExtResource("1_t2ii4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_necju")
+animation = &"Idle"
+autoplay = "Idle"
