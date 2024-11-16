@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=40 format=3 uid="uid://c6gjiynxf0htu"]
 
-[ext_resource type="Texture2D" uid="uid://c1dpl50u0vod1" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Left-Facing_Front_32x32.png" id="1_hdrcc"]
-[ext_resource type="Texture2D" uid="uid://df4ommluja5sd" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Right-Facing_Front_32x32.png" id="2_3jxgo"]
-[ext_resource type="Texture2D" uid="uid://itk415y3x0gm" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Left-Facing_Back_32x32.png" id="3_eg2x7"]
-[ext_resource type="Texture2D" uid="uid://cxlt6pyyuha5e" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Right-Facing_Back_32x32.png" id="4_nwfbc"]
+[ext_resource type="Texture2D" uid="uid://baticoh878otg" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Left-Facing_Front_32x32.png" id="1_hdrcc"]
+[ext_resource type="Texture2D" uid="uid://thrrgve273q3" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Right-Facing_Front_32x32.png" id="2_3jxgo"]
+[ext_resource type="Texture2D" uid="uid://dnep510nijtau" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Left-Facing_Back_32x32.png" id="3_eg2x7"]
+[ext_resource type="Texture2D" uid="uid://dl8vopnjadmqb" path="res://Assets/Slime_Assets/Small/Tilesheet_SMALLSlime_Right-Facing_Back_32x32.png" id="4_nwfbc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6txq"]
 atlas = ExtResource("1_hdrcc")
