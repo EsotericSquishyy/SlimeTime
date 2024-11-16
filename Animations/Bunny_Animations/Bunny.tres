@@ -1,10 +1,10 @@
 [gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://dlj7t42nd5fjm"]
 
-[ext_resource type="Texture2D" uid="uid://dgsx7jjtaweqr" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Left-Facing_Front_Idle_32x32.png" id="1_kknp7"]
-[ext_resource type="Texture2D" uid="uid://dev502lgoa5a1" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Left-Facing_Front_Walking_32x32.png" id="3_rs8ss"]
-[ext_resource type="Texture2D" uid="uid://cxy3ha266d2eb" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Right-Facing_Front_Walking_32x32.png" id="4_d2v0v"]
-[ext_resource type="Texture2D" uid="uid://ci6jbp4i85fgh" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Left-Facing_Back_Walking_32x32.png" id="5_k4fx3"]
-[ext_resource type="Texture2D" uid="uid://dics7r1go4cuh" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Right-Facing_Back_Walking_32x32.png" id="6_34yu3"]
+[ext_resource type="Texture2D" uid="uid://kx064uwvwjew" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Left-Facing_Front_Idle_32x32.png" id="1_kknp7"]
+[ext_resource type="Texture2D" uid="uid://mtjykucm3310" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Left-Facing_Front_Walking_32x32.png" id="3_rs8ss"]
+[ext_resource type="Texture2D" uid="uid://8x28pgjsddrw" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Right-Facing_Front_Walking_32x32.png" id="4_d2v0v"]
+[ext_resource type="Texture2D" uid="uid://bhfsrolpdisit" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Left-Facing_Back_Walking_32x32.png" id="5_k4fx3"]
+[ext_resource type="Texture2D" uid="uid://dwjf0c73bihoo" path="res://Assets/Enemy_Assets/Bunny/Tilesheet_Enemy_Bunny_Right-Facing_Back_Walking_32x32.png" id="6_34yu3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_baxwj"]
 atlas = ExtResource("1_kknp7")
