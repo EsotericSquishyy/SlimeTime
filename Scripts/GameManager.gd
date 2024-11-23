@@ -7,11 +7,18 @@ enum GameState {
     ANIM_ENEMY
 }
 
+var tileMap : TileMap
+var cursor : Node2D
+
 var current_state: GameState = GameState.PLAYER
-
+    
+func init(tileMap : TileMap, cursor : Node2D):
+    self.tileMap = tileMap
+    self.cursor = cursor
+    
 func _ready():
-    set_process(true)
-
+    pass    
+    
 func _process(_delta):
     match current_state:
         GameState.PLAYER:
@@ -25,8 +32,8 @@ func _process(_delta):
 
 func handle_player_phase():
     # ...
-    var cursor_pos = $TileMap.get_cursor_pos()
-    $Cursor.position = cursor_pos
+    var cursor_pos = tileMap.get_cursor_pos()
+    cursor.position = cursor_pos
 
     current_state = GameState.ANIM_PLAYER
 
