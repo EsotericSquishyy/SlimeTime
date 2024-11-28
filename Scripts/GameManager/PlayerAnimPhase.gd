@@ -1,11 +1,10 @@
-extends Node2D
+extends Phase
 
+func begin():
+    print("BEGIN PLAYER ANIM PHASE")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
+func handle(delta):
+    return get_parent().GamePhase.PLAYER_ANIM
+    
+func end():
+    print("END PLAYER ANIM PHASE")

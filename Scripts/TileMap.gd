@@ -52,7 +52,7 @@ func init():
 
     toggle_overlay()
     
-func _process(_delta):
+func _process(delta):
     cursor_pos = get_tile_pos(cursor_pos)
 
 func get_tile_pos(curr: Vector2i):
