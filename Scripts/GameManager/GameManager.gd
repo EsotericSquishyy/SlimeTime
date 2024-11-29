@@ -28,9 +28,10 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D):
     phaseDict[currentPhase].begin()
 
 func _process(delta):
-    cursor.position = tileMap.get_cursor_pos();
+    tileMap.update_cursor_pos()
+    cursor.position = tileMap.get_cursor_pos_global()
 
-    var nextPhase = phaseDict[currentPhase].handle(delta);
+    var nextPhase = phaseDict[currentPhase].handle(delta)
 
     if nextPhase != currentPhase:
         phaseDict[currentPhase].end()

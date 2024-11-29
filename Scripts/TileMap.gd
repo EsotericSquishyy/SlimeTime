@@ -1,7 +1,7 @@
 extends TileMap
 
 # Used for raycasting to get hovered tile
-const TILEMAP_COLLISION_LAYER = 1 << 7
+const   TILEMAP_COLLISION_LAYER = 1 << 7
 
 # Used for offsetting cursor for half tiles
 const CURSOR_LOCAL_HALF_TILE_OFFSET = Vector2(0, 8)
@@ -52,15 +52,6 @@ func init():
 
     toggle_overlay()
 
-func _process(_delta):
-    cursor_pos = get_tile_pos(cursor_pos)
-    return
-
-
-
-
-
-
 func get_tile_pos(curr: Vector2i):
     ## Raycast
     var space_state = get_world_2d().direct_space_state
@@ -82,7 +73,10 @@ func get_tile_pos(curr: Vector2i):
 
     return local_to_map(to_local(curr))
 
-func get_cursor_pos():
+func update_cursor_pos():
+    cursor_pos = get_tile_pos(cursor_pos)
+    
+func get_cursor_pos_global():
     if(tile_data[cursor_pos]._is_half_tile):
         return to_global(map_to_local(cursor_pos) + CURSOR_LOCAL_HALF_TILE_OFFSET)
     else:

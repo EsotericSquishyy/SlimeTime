@@ -42,17 +42,13 @@ func _toggle_selected():
 
 
 func _handle_unselected():
-    var mouse_pos = get_viewport().get_mouse_position()
-    var tile_pos = tileMap.get_tile_pos(mouse_pos)
-
-    if Input.is_action_just_pressed("mouse_left") and tile_pos == player_pos:
+    if Input.is_action_just_pressed("mouse_left") and tileMap.cursor_pos == player_pos:
         _toggle_selected()
     return
 
 
 func _handle_selected():
-    var mouse_pos = get_viewport().get_mouse_position()
-    var tile_pos = tileMap.get_tile_pos(mouse_pos)
+    var tile_pos = tileMap.cursor_pos
 
     var index = path.find(tile_pos)
     if index == -1:
