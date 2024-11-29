@@ -21,6 +21,7 @@ var _over_source_id: int
 
 # Tile data vars
 var _slimed: bool
+var _selected: bool
 var _crossable: bool
 var _is_half_tile: bool
 
@@ -31,6 +32,7 @@ func _init(tileMap: TileMap, pos: Vector2i, layer: int):
     var tile_data = _tileMap.get_cell_tile_data(layer, _pos)
     _crossable = tile_data.get_custom_data(TILEDATA_CROSSABLE)
     _slimed = tile_data.get_custom_data(TILEDATA_SLIMED)
+    _selected = false
     _is_half_tile = tile_data.get_custom_data(TILEDATA_IS_HALF_TILE)
     
     #if(_is_half_tile):
@@ -40,7 +42,10 @@ func _init(tileMap: TileMap, pos: Vector2i, layer: int):
 
 func update_overlay():
     if _crossable:
-        _tileMap.set_cell(_tileMap.over_ind, _pos, _over_source_id, TILESET_OVERLAY_CROSSABLE)
+        if _selected:
+            _tileMap.set_cell(_tileMap.over_ind, _pos, _over_source_id, TILESET_OVERLAY_PATH)
+        else:
+            _tileMap.set_cell(_tileMap.over_ind, _pos, _over_source_id, TILESET_OVERLAY_CROSSABLE)
     else:
         _tileMap.set_cell(_tileMap.over_ind, _pos, _over_source_id, TILESET_OVERLAY_UNCROSSABLE)
 
@@ -50,6 +55,13 @@ func update_overlay():
     else:
         _tileMap.set_cell(_tileMap.slime_ind, _pos, -1)
 
-func toggle_slime(): # Temp function for testing
+func toggle_slime():
     _slimed = !_slimed
     update_overlay()
+
+func toggle_selected_overlay():
+    _selected = !_selected
+    update_overlay()
+
+func is_crossable():
+    return _crossable

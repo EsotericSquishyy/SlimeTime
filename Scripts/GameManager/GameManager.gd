@@ -18,20 +18,18 @@ var currentPhase : GamePhase
     GamePhase.ENEMY: $EnemyPhase,
     GamePhase.ENEMY_ANIM: $EnemyAnimPhase
 }
-    
+
 func init(tileMap : TileMap, player : Node2D, cursor : Node2D):
     self.tileMap = tileMap
     self.player = player
     self.cursor = cursor
-    
+
     currentPhase = GamePhase.PLAYER
     phaseDict[currentPhase].begin()
-    
+
 func _process(delta):
-    cursor.position = tileMap.get_cursor_pos();
-    
     var nextPhase = phaseDict[currentPhase].handle(delta);
-    
+
     if nextPhase != currentPhase:
         phaseDict[currentPhase].end()
         phaseDict[nextPhase].begin()
