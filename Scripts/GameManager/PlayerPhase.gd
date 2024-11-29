@@ -12,12 +12,12 @@ var player : Node2D
 var player_pos : Vector2i
 
 func begin():
-    print("BEGIN PLAYER PHASE")
-
     tileMap = get_parent().tileMap
     player = get_parent().player
     player_pos = tileMap.get_tile_pos(player.position)
     path = [player_pos]
+    print("BEGIN PLAYER PHASE")
+
 
 func handle(_delta):
     match state:
@@ -47,7 +47,6 @@ func _handle_unselected():
 
     if Input.is_action_just_pressed("mouse_left") and tile_pos == player_pos:
         _toggle_selected()
-        state = PlayerState.SELECTED
     return
 
 
@@ -65,4 +64,12 @@ func _handle_selected():
         for i in range(index + 1, path.size()):
             tileMap.toggle_selected_overlay(path[i])
         path = path.slice(0, index + 1)
+
+    if Input.is_action_just_pressed("mouse_left"):
+        _toggle_selected()
+        if tile_pos == player_pos:
+            path = [player_pos]
+        else:
+            end()
+
     return
