@@ -16,20 +16,20 @@ const _TILEDATA_IS_HALF_TILE = "Is_Half_Tile"
 const _TILEDATA_COST = "Cost"
 
 # Vars for editing tilemap
-var _tileMap: TileMap
-var _pos: Vector2i
-var _over_source_id: int
+var _tileMap : TileMap
+var _pos : Vector2i
+var _over_source_id : int
 
 # Tile data vars
-var _selected: bool
-var _slimed: bool
-var _crossable: bool
-var _is_half_tile: bool
-var _cost: int
+var _selected : bool
+var _slimed : bool
+var _crossable : bool
+var _is_half_tile : bool
+var _cost : int
 
 var _unit : Node2D
 
-func _init(tileMap: TileMap, pos: Vector2i, layer: int):
+func _init(tileMap : TileMap, pos : Vector2i, layer : int):
     _tileMap   = tileMap
     _pos       = pos
 
@@ -80,5 +80,5 @@ func get_cost():
 func get_unit():
     return _unit
 
-func set_unit(unit: Node2D):
+func set_unit(unit : Node2D):
     _unit = unit

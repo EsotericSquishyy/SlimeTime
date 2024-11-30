@@ -23,7 +23,7 @@ func init(resource : EnemyData):
         resource.MovementType.AGGRESSIVE:
             trace_path = aggressive_pathing
 
-func is_target_visible(player_position: Vector2) -> bool:
+func is_target_visible(player_position : Vector2) -> bool:
     return position.distance_to(player_position) < detect_rad
 
 func timid_pathing():

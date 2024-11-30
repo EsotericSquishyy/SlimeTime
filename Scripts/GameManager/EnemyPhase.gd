@@ -5,7 +5,7 @@ var enemies = []
 func begin():
     print("BEGIN ENEMY PHASE")
 
-func handle(delta):
+func handle(_delta):
     return get_parent().GamePhase.ENEMY
 
 func end():

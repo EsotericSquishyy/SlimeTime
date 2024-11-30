@@ -23,14 +23,14 @@ var _over_hidden = false
 var _tile_data = {}
 var _cursor_pos : Vector2i = Vector2i(0,0)
 
-func get_tileset_source_id(tileset_source_name: String) -> int:
+func get_tileset_source_id(tileset_source_name : String) -> int:
     for i in range(tile_set.get_source_count()):
         if(tile_set.get_source(tile_set.get_source_id(i)).resource_name == tileset_source_name):
             return tile_set.get_source_id(i)
 
     return -1
 
-func get_layer_index(layer_name: String) -> int:
+func get_layer_index(layer_name : String) -> int:
     for i in range(get_layers_count()):
         if get_layer_name(i) == layer_name:
             return i
@@ -53,7 +53,7 @@ func init():
 
     toggle_overlay()
 
-func get_tile_pos_at(pos: Vector2, curr: Vector2i):
+func get_tile_pos_at(pos : Vector2, curr : Vector2i):
     ## Raycast
     var space_state = get_world_2d().direct_space_state
     var query = PhysicsPointQueryParameters2D.new()
@@ -74,7 +74,7 @@ func get_tile_pos_at(pos: Vector2, curr: Vector2i):
 
     return curr
 
-func get_tile_pos(curr: Vector2i):
+func get_tile_pos(curr : Vector2i):
     return get_tile_pos_at(get_global_mouse_position(), curr)
 
 func update_cursor_pos():
@@ -97,31 +97,31 @@ func toggle_overlay():
     else:
         set_layer_modulate(over_ind, Color(1,1,1,1))
 
-func toggle_selected_overlay(curr: Vector2i):
+func toggle_selected_overlay(curr : Vector2i):
     _tile_data[curr].toggle_selected_overlay()
     
-func toggle_slimed(curr: Vector2i):
+func toggle_slimed(curr : Vector2i):
     _tile_data[curr].toggle_slimed()
     
-func is_slimed(curr: Vector2i):
+func is_slimed(curr : Vector2i):
     return _tile_data[curr].is_slimed()
  
-func is_crossable(curr: Vector2i):
+func is_crossable(curr : Vector2i):
     return _tile_data[curr].is_crossable()
     
-func get_cost(curr: Vector2i):
+func get_cost(curr : Vector2i):
     return _tile_data[curr].get_cost()
 
-func get_unit(curr: Vector2i):
+func get_unit(curr : Vector2i):
     return _tile_data[curr].get_unit()
     
-func set_unit(curr: Vector2i, unit: Node2D):
+func set_unit(curr : Vector2i, unit : Node2D):
     _tile_data[curr].set_unit(unit)
 
-func is_adjacent(vec1: Vector2i, vec2: Vector2i):
+func is_adjacent(vec1 : Vector2i, vec2 : Vector2i):
     return abs(vec1.x - vec2.x) + abs(vec1.y - vec2.y) == 1
 
-func map_to_global(curr: Vector2i):
+func map_to_global(curr : Vector2i):
     if(_tile_data[curr]._is_half_tile):
         return to_global(map_to_local(curr) + _CURSOR_LOCAL_HALF_TILE_OFFSET)
     else:

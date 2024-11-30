@@ -8,7 +8,7 @@ enum PlayerAnimState {
 var _state : PlayerAnimState
 var _player : Node2D
 var _tileMap : TileMap
-var _path : Array
+var _path : Array[Vector2i]
 
 func begin():
     _player = get_parent().get_player()
@@ -40,7 +40,6 @@ func _handle_move(delta):
         if(not _tileMap.is_slimed(_path.front())):
             _tileMap.toggle_slimed(_path.front())
             _player.set_slime_count(_player.get_slime_count() - _tileMap.get_cost(_path.front()))
-            print(_player.get_slime_count())
             
         var curr_pos = _path.pop_front()
         
@@ -56,7 +55,7 @@ func _handle_move(delta):
             
     return get_parent().GamePhase.PLAYER_ANIM
     
-func _handle_attack(delta):
+func _handle_attack(_delta):
     print("ATTACK!")
     
     _state = PlayerAnimState.MOVING
