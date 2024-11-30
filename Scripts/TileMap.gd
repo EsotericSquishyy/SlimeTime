@@ -106,4 +106,7 @@ func is_adjacent(vec1: Vector2i, vec2: Vector2i):
     return abs(vec1.x - vec2.x) <= 1 and abs(vec1.y - vec2.y) <= 1
 
 func map_to_global(curr: Vector2i):
-    return to_global(map_to_local(curr))
+    if(_tile_data[curr]._is_half_tile):
+        return to_global(map_to_local(curr) + _CURSOR_LOCAL_HALF_TILE_OFFSET)
+    else:
+        return to_global(map_to_local(curr))
