@@ -4,6 +4,7 @@ var _tileMap : TileMap
 var _player : Node2D
 var _cursor : Node2D
 var _path : Array[Vector2i]
+var _enemyManager : Node
 
 enum GamePhase {
     PLAYER,
@@ -20,11 +21,12 @@ var _currentPhase : GamePhase
     GamePhase.ENEMY_ANIM: $EnemyAnimPhase
 }
 
-func init(tileMap : TileMap, player : Node2D, cursor : Node2D):
+func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : Node):
     _tileMap = tileMap
     _player = player
     _cursor = cursor
     _path = []
+    _enemyManager = enemyManager
 
     _currentPhase = GamePhase.PLAYER
     await get_tree().physics_frame
@@ -54,3 +56,9 @@ func set_path(path):
 
 func get_global_path():
     return _path.map(_tileMap.map_to_global)
+
+func get_enemy_dict():
+    pass
+
+
+
