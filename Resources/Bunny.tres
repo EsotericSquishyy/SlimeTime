@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://lyisa6tiyrtb"]
+
+[ext_resource type="SpriteFrames" uid="uid://dlj7t42nd5fjm" path="res://Animations/Bunny_Animations/Bunny.tres" id="1_3tubt"]
+[ext_resource type="Script" path="res://Scripts/Resources/EnemyData.gd" id="1_6pdye"]
+
+[resource]
+script = ExtResource("1_6pdye")
+health_points = 10
+damage = 5
+detect_rad = 3.0
+sprite_frames = ExtResource("1_3tubt")
+movement_type = 0

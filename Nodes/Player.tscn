@@ -9,5 +9,6 @@ script = ExtResource("1_t2ii4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_necju")
-animation = &"Idle"
+animation = &"Moving_Upper_Right"
 autoplay = "Idle"
+frame_progress = 0.182061

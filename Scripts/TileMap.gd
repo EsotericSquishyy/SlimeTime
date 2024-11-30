@@ -104,7 +104,7 @@ func is_crossable(curr: Vector2i):
     return _tile_data[curr].is_crossable()
 
 func is_adjacent(vec1: Vector2i, vec2: Vector2i):
-    return abs(vec1.x - vec2.x) <= 1 and abs(vec1.y - vec2.y) <= 1
+    return abs(vec1.x - vec2.x) + abs(vec1.y - vec2.y) == 1
 
 func map_to_global(curr: Vector2i):
     if(_tile_data[curr]._is_half_tile):
