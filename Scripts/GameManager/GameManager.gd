@@ -13,8 +13,8 @@ enum GamePhase {
     ENEMY_ANIM
 }
 
-var currentPhase : GamePhase
-@onready var phaseDict : Dictionary = {
+var _currentPhase : GamePhase
+@onready var _phaseDict : Dictionary = {
     GamePhase.PLAYER: $PlayerPhase,
     GamePhase.PLAYER_ANIM: $PlayerAnimPhase,
     GamePhase.ENEMY: $EnemyPhase,
@@ -28,19 +28,21 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : No
     _path = []
     _enemyManager = enemyManager
 
-    currentPhase = GamePhase.PLAYER
-    phaseDict[currentPhase].begin()
+    _currentPhase = GamePhase.PLAYER
+    await get_tree().physics_frame
+    await get_tree().physics_frame
+    _phaseDict[_currentPhase].begin()
 
 func _process(delta):
     _tileMap.update_cursor_pos()
     _cursor.position = _tileMap.get_cursor_pos_global()
 
-    var nextPhase = phaseDict[currentPhase].handle(delta)
+    var nextPhase = _phaseDict[_currentPhase].handle(delta)
 
-    if nextPhase != currentPhase:
-        phaseDict[currentPhase].end()
-        phaseDict[nextPhase].begin()
-        currentPhase = nextPhase
+    if nextPhase != _currentPhase:
+        _phaseDict[_currentPhase].end()
+        _phaseDict[nextPhase].begin()
+        _currentPhase = nextPhase
 
 func get_tileMap():
     return _tileMap
