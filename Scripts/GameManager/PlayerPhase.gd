@@ -14,10 +14,9 @@ var player_pos : Vector2i
 func begin():
     tileMap = get_parent().tileMap
     player = get_parent().player
-    player_pos = tileMap.get_tile_pos(player.position)
+    player_pos = tileMap.get_tile_pos_at(player.global_position, player.position)
     path = [player_pos]
     print("BEGIN PLAYER PHASE")
-
 
 func handle(_delta):
     match state:
@@ -31,7 +30,6 @@ func handle(_delta):
 func end():
     print("END PLAYER PHASE")
 
-
 func _toggle_selected():
     tileMap.toggle_overlay()
     match state:
@@ -40,12 +38,9 @@ func _toggle_selected():
         PlayerState.SELECTED:
             state = PlayerState.UNSELECTED
 
-
 func _handle_unselected():
     if Input.is_action_just_pressed("mouse_left") and tileMap.cursor_pos == player_pos:
         _toggle_selected()
-    return
-
 
 func _handle_selected():
     var tile_pos = tileMap.cursor_pos
@@ -61,11 +56,14 @@ func _handle_selected():
             tileMap.toggle_selected_overlay(path[i])
         path = path.slice(0, index + 1)
 
-    if Input.is_action_just_pressed("mouse_left"):
+    if(Input.is_action_just_pressed("mouse_right")):
+        _toggle_selected()
+        for i in range(1, path.size()):
+            tileMap.toggle_selected_overlay(path[i])
+        path = [player_pos]
+    elif Input.is_action_just_pressed("mouse_left"):
         _toggle_selected()
         if tile_pos == player_pos:
             path = [player_pos]
         else:
             end()
-
-    return

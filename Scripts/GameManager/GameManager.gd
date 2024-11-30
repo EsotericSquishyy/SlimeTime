@@ -25,12 +25,14 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D):
     self.cursor = cursor
 
     currentPhase = GamePhase.PLAYER
+    await get_tree().physics_frame
+    await get_tree().physics_frame
     phaseDict[currentPhase].begin()
 
-func _process(delta):
+func _process(delta):        
     tileMap.update_cursor_pos()
     cursor.position = tileMap.get_cursor_pos_global()
-
+    
     var nextPhase = phaseDict[currentPhase].handle(delta)
 
     if nextPhase != currentPhase:
