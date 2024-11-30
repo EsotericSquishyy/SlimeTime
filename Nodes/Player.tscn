@@ -6,6 +6,7 @@
 [node name="Player" type="Node2D"]
 z_index = 2
 script = ExtResource("1_t2ii4")
+_init_slime_count = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_necju")

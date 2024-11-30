@@ -99,9 +99,24 @@ func toggle_overlay():
 
 func toggle_selected_overlay(curr: Vector2i):
     _tile_data[curr].toggle_selected_overlay()
-
+    
+func toggle_slimed(curr: Vector2i):
+    _tile_data[curr].toggle_slimed()
+    
+func is_slimed(curr: Vector2i):
+    return _tile_data[curr].is_slimed()
+ 
 func is_crossable(curr: Vector2i):
     return _tile_data[curr].is_crossable()
+    
+func get_cost(curr: Vector2i):
+    return _tile_data[curr].get_cost()
+
+func get_unit(curr: Vector2i):
+    return _tile_data[curr].get_unit()
+    
+func set_unit(curr: Vector2i, unit: Node2D):
+    _tile_data[curr].set_unit(unit)
 
 func is_adjacent(vec1: Vector2i, vec2: Vector2i):
     return abs(vec1.x - vec2.x) + abs(vec1.y - vec2.y) == 1

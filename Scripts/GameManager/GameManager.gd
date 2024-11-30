@@ -52,10 +52,9 @@ func get_player():
 
 func set_path(path):
     _path = path
-    return
 
-func get_global_path():
-    return _path.map(_tileMap.map_to_global)
+func get_move_path():
+    return _path
 
 func get_enemy_dict():
     pass

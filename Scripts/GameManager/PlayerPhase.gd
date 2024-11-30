@@ -73,7 +73,6 @@ func _handle_selected():
             for i in range(0, _path.size()):
                 _tileMap.toggle_selected_overlay(_path[i])
                 
-            _path.pop_front()
             get_parent().set_path(_path)
             
             return get_parent().GamePhase.PLAYER_ANIM

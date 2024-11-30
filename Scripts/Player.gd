@@ -6,9 +6,27 @@ const _ANIMATION_PLAYER_SMALL = preload("res://Animations/Slime_Animations/Playe
 
 const _MOVE_SPEED = 2.0
 
+# Init vars
+@export var _init_slime_count : int
+@export var _init_position : Vector2i
+
+# Gameloop vars
+var _slime_count : int
+
+var attacking : bool = false
+
 var completion : float
 var prev_position : Vector2
 var next_position : Vector2
+
+func init(tileMap : TileMap):
+    _slime_count = _init_slime_count;
+
+    self.position = tileMap.map_to_global(_init_position)
+    tileMap.set_unit(_init_position, self)
+    
+    if not tileMap.is_slimed(_init_position):
+        tileMap.toggle_slimed(_init_position)
 
 func begin_move(next_position : Vector2):
     completion = 0
@@ -43,3 +61,9 @@ func set_animation():
         $AnimatedSprite2D.play("Moving_Upper_Right")
     elif angle < -90 and angle > -180:
         $AnimatedSprite2D.play("Moving_Upper_Left") 
+        
+func get_slime_count():
+    return _slime_count
+    
+func set_slime_count(count: int):
+    _slime_count = count

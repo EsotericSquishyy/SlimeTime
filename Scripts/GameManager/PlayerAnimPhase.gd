@@ -1,5 +1,11 @@
 extends Phase
 
+enum PlayerAnimState {
+    ATTACKING,
+    MOVING
+}
+
+var _state : PlayerAnimState
 var _player : Node2D
 var _tileMap : TileMap
 var _path : Array
@@ -7,19 +13,56 @@ var _path : Array
 func begin():
     _player = get_parent().get_player()
     _tileMap = get_parent().get_tileMap()
-    _path = get_parent().get_global_path()
-    _player.begin_move(_path.pop_front())
+    _path = get_parent().get_move_path()
+    
+    _tileMap.set_unit(_path.front(), null)
+    _path.pop_front()
+    
+    if _tileMap.get_unit(_path.front()) != null:
+        _state = PlayerAnimState.ATTACKING
+    else:
+        _state = PlayerAnimState.MOVING
+        _player.begin_move(_tileMap.map_to_global(_path.front()))
+        
     print("BEGIN PLAYER ANIM PHASE")
 
 func handle(delta):
+    match _state:
+        PlayerAnimState.ATTACKING:
+            return _handle_attack(delta)
+        PlayerAnimState.MOVING:
+            return _handle_move(delta)
+    
+func _handle_move(delta):
     if _player.move(delta):
-        if len(_path) == 0:
+        _tileMap.set_unit(_path.front(), _player)
+    
+        if(not _tileMap.is_slimed(_path.front())):
+            _tileMap.toggle_slimed(_path.front())
+            _player.set_slime_count(_player.get_slime_count() - _tileMap.get_cost(_path.front()))
+            print(_player.get_slime_count())
+            
+        var curr_pos = _path.pop_front()
+        
+        if _path.is_empty():
             return get_parent().GamePhase.PLAYER
         else:
-            _player.begin_move(_path.pop_front())
+            _tileMap.set_unit(curr_pos, null)
             
+            if _tileMap.get_unit(_path.front()) != null:
+                _state = PlayerAnimState.ATTACKING
+            else:
+                _player.begin_move(_tileMap.map_to_global(_path.front()))
+            
+    return get_parent().GamePhase.PLAYER_ANIM
+    
+func _handle_attack(delta):
+    print("ATTACK!")
+    
+    _state = PlayerAnimState.MOVING
+    _player.begin_move(_tileMap.map_to_global(_path.front()))
+    
     return get_parent().GamePhase.PLAYER_ANIM
 
 func end():
     print("END PLAYER ANIM PHASE")
-
