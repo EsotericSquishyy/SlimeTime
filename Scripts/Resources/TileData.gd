@@ -34,7 +34,7 @@ func _init(tileMap: TileMap, pos: Vector2i, layer: int):
     _slimed = tile_data.get_custom_data(_TILEDATA_SLIMED)
     _selected = false
     _is_half_tile = tile_data.get_custom_data(_TILEDATA_IS_HALF_TILE)
-    
+
     if(_is_half_tile):
         _over_source_id = _tileMap.over_half_source_id
     else:
@@ -51,7 +51,7 @@ func update_overlay():
         _tileMap.set_cell(_tileMap.slime_ind, _pos, _over_source_id, _TILESET_OVERLAY_SLIMED)
     else:
         _tileMap.set_cell(_tileMap.slime_ind, _pos, -1)
-        
+
     if _selected:
         _tileMap.set_cell(_tileMap.over_ind, _pos, _over_source_id, _TILESET_OVERLAY_PATH)
 

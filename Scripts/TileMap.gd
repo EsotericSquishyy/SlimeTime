@@ -19,6 +19,7 @@ var over_ind = -1
 var slime_ind = -1
 var _over_hidden = false
 
+# TileData access information
 var _tile_data = {}
 var _cursor_pos : Vector2i = Vector2i(0,0)
 
@@ -52,12 +53,12 @@ func init():
 
     toggle_overlay()
 
-func get_tile_pos_at(position: Vector2, curr: Vector2i):
+func get_tile_pos_at(pos: Vector2, curr: Vector2i):
     ## Raycast
     var space_state = get_world_2d().direct_space_state
     var query = PhysicsPointQueryParameters2D.new()
     query.collision_mask = _TILEMAP_COLLISION_LAYER
-    query.position = position
+    query.position = pos
     var results = space_state.intersect_point(query)
 
     if(results.size() > 0):
@@ -71,7 +72,7 @@ func get_tile_pos_at(position: Vector2, curr: Vector2i):
 
         return temp_pos
 
-    return curr    
+    return curr
 
 func get_tile_pos(curr: Vector2i):
     return get_tile_pos_at(get_global_mouse_position(), curr)

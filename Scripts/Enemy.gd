@@ -1,26 +1,36 @@
 extends Node2D
 
-var next_pos: Vector2
-var lerp_speed = 3.0
-var moving = false
-var detect_rad = 100
+var health_points   : int
+var damage          : int
+var detect_rad      : float
+var trace_path      : Callable
 
-func _process(delta):
-    if moving:
-        move_towards_target(delta)
+var next_pos : Vector2
+var lerp_speed = 3.0
+
+func init(resource : EnemyData):
+    health_points   = resource.health_points
+    damage          = resource.damage
+    detect_rad      = resource.detect_rad
+
+    $AnimatedSprite2D.sprite_frames = resource.sprite_frames
+
+    match resource.movement_type:
+        resource.MovementType.TIMID:
+            trace_path = timid_pathing
+        resource.MovementType.NEUTRAL:
+            trace_path = neutral_pathing
+        resource.MovementType.AGGRESSIVE:
+            trace_path = aggressive_pathing
 
 func is_target_visible(player_position: Vector2) -> bool:
     return position.distance_to(player_position) < detect_rad
 
-func move_towards_player(player_position: Vector2):
-    if is_target_visible(player_position):
-        next_pos = player_position # change to pathfind
-        moving = true
+func timid_pathing():
+    pass
 
-func move_towards_target(delta):
-    position = position.lerp(next_pos, lerp_speed * delta)
-    if position.distance_to(next_pos) < 1.0:
-        position = next_pos
-        moving = false
-        # Transition to animation phase logic here
+func neutral_pathing():
+    pass
 
+func aggressive_pathing():
+    pass

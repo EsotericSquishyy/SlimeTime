@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5pi1hl3t1ib"]
+[gd_scene load_steps=9 format=3 uid="uid://b5pi1hl3t1ib"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_frlp6"]
 [ext_resource type="TileSet" uid="uid://iny4a0gpjkej" path="res://Tiles/Level_1.tres" id="1_ixefu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://35whdovamw5y" path="res://Nodes/Cursor.tscn" id="5_0upqt"]
 [ext_resource type="PackedScene" uid="uid://cth2lrajjgets" path="res://Nodes/GameManager.tscn" id="6_j3icu"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="7_7kifw"]
+[ext_resource type="Resource" uid="uid://lyisa6tiyrtb" path="res://Nodes/Resources/Bunny.tres" id="8_h1wxc"]
 
 [node name="Level1" type="Node"]
 script = ExtResource("1_frlp6")
@@ -42,3 +43,6 @@ position = Vector2(0, 32)
 
 [node name="EnemyManager" type="Node" parent="."]
 script = ExtResource("7_7kifw")
+enemy_datas = {
+Vector2i(32, 16): ExtResource("8_h1wxc")
+}
