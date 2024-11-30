@@ -6,14 +6,14 @@ enum PlayerState {
 }
 
 var state : PlayerState = PlayerState.UNSELECTED
-var path = []
 var tileMap : TileMap
+var path : Array[Vector2i]
 var player : Node2D
 var player_pos : Vector2i
 
 func begin():
-    tileMap = get_parent().tileMap
-    player = get_parent().player
+    tileMap = get_parent().get_tileMap()
+    player = get_parent().get_player()
     player_pos = tileMap.get_tile_pos(player.position)
     path = [player_pos]
     print("BEGIN PLAYER PHASE")
@@ -22,11 +22,9 @@ func begin():
 func handle(_delta):
     match state:
         PlayerState.UNSELECTED:
-            _handle_unselected()
+            return _handle_unselected()
         PlayerState.SELECTED:
-            _handle_selected()
-
-    return get_parent().GamePhase.PLAYER
+            return _handle_selected()
 
 func end():
     print("END PLAYER PHASE")
@@ -44,7 +42,7 @@ func _toggle_selected():
 func _handle_unselected():
     if Input.is_action_just_pressed("mouse_left") and tileMap.cursor_pos == player_pos:
         _toggle_selected()
-    return
+    return get_parent().GamePhase.PLAYER
 
 
 func _handle_selected():
@@ -66,6 +64,7 @@ func _handle_selected():
         if tile_pos == player_pos:
             path = [player_pos]
         else:
-            end()
+            get_parent().set_path(path)
+            return get_parent().GamePhase.PLAYER_ANIM
 
-    return
+    return get_parent().GamePhase.PLAYER
