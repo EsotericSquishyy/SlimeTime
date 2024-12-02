@@ -14,12 +14,12 @@ var _player_pos : Vector2i
 func init():
     _tileMap = get_parent().get_tileMap()
     _player = get_parent().get_player()
-    _player_pos = _player.get_init_pos()
+    _player_pos = _player.get_tile_pos()
     _path = [_player_pos]
     _tileMap.toggle_selected_overlay(_player_pos)
 
 func begin():
-    _player_pos = _tileMap.get_tile_pos_at(_player.global_position, _player.global_position)
+    _player_pos = _player.get_tile_pos()
     _path = [_player_pos]
     _tileMap.toggle_selected_overlay(_player_pos)
     print("BEGIN PLAYER PHASE")

@@ -13,58 +13,61 @@ const _MOVE_SPEED = 2.0
 # Gameloop vars
 var _slime_count : int
 
+var _tileMap : TileMap
 var _completion : float
-var _prev_position : Vector2
-var _next_position : Vector2
+var _prev_position : Vector2i
+var _curr_position : Vector2i
+var _next_position : Vector2i
 
 func init(tileMap : TileMap):
     _slime_count = _init_slime_count;
 
-    self.position = tileMap.map_to_global(_init_position)
-    tileMap.set_unit(_init_position, self)
+    _tileMap = tileMap
+    _curr_position = _init_position
+    self.position = _tileMap.map_to_global(_init_position)
+    _tileMap.set_unit(_init_position, self)
     
-    if not tileMap.is_slimed(_init_position):
-        tileMap.toggle_slimed(_init_position)
+    if not _tileMap.is_slimed(_init_position):
+        _tileMap.toggle_slimed(_init_position)
 
-func begin_move(next_position : Vector2):
+func begin_move(next_position : Vector2i):
     _completion = 0
-    _prev_position = self.position
+    _prev_position = _curr_position
     _next_position = next_position
     set_animation()
 
 func move(delta):
     _completion += _MOVE_SPEED * delta
     
-    if _completion >= 1:
-        self.position = _next_position
+    if _completion >= 1.0:
+        _curr_position = _next_position
+        self.position = _tileMap.map_to_global(_next_position)
         set_animation()
         return true
     
-    self.position = _prev_position.lerp(_next_position, _completion)
+    self.position = _tileMap.map_to_global(_prev_position).lerp(_tileMap.map_to_global(_next_position), _completion)
     
     return false
 
 func set_animation():
-    if self.position == _next_position:
-        $AnimatedSprite2D.play("Idle")
-        return
+    var diff = _next_position - _curr_position
     
-    var angle = rad_to_deg(self.position.angle_to_point(_next_position))
-    
-    if angle > 0 and angle < 90:
+    if diff.x > 0:
         $AnimatedSprite2D.play("Moving_Bottom_Right")
-    elif angle > 90 and angle < 180:
+    elif diff.x < 0:
+        $AnimatedSprite2D.play("Moving_Upper_Left")
+    elif diff.y > 0:
         $AnimatedSprite2D.play("Moving_Bottom_Left")
-    elif angle < 0 and angle > -90:
+    elif diff.y < 0:
         $AnimatedSprite2D.play("Moving_Upper_Right")
-    elif angle < -90 and angle > -180:
-        $AnimatedSprite2D.play("Moving_Upper_Left") 
+    else:
+        $AnimatedSprite2D.play("Idle")
         
 func get_slime_count():
     return _slime_count
     
 func set_slime_count(count : int):
     _slime_count = count
-    
-func get_init_pos():
-    return _init_position
+
+func get_tile_pos():
+    return _curr_position

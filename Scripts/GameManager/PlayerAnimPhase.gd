@@ -17,14 +17,13 @@ func init():
 func begin():
     _path = get_parent().get_move_path()
     
-    _tileMap.set_unit(_path.front(), null)
-    _path.pop_front()
+    _tileMap.set_unit(_path.pop_front(), null)
     
     if _tileMap.get_unit(_path.front()) != null:
         _state = PlayerAnimState.ATTACKING
     else:
         _state = PlayerAnimState.MOVING
-        _player.begin_move(_tileMap.map_to_global(_path.front()))
+        _player.begin_move(_path.front())
         
     print("BEGIN PLAYER ANIM PHASE")
 
@@ -53,7 +52,7 @@ func _handle_move(delta):
             if _tileMap.get_unit(_path.front()) != null:
                 _state = PlayerAnimState.ATTACKING
             else:
-                _player.begin_move(_tileMap.map_to_global(_path.front()))
+                _player.begin_move(_path.front())
             
     return get_parent().GamePhase.PLAYER_ANIM
     
@@ -61,7 +60,7 @@ func _handle_attack(_delta):
     print("ATTACK!")
     
     _state = PlayerAnimState.MOVING
-    _player.begin_move(_tileMap.map_to_global(_path.front()))
+    _player.begin_move(_path.front())
     
     return get_parent().GamePhase.PLAYER_ANIM
 
