@@ -52,29 +52,25 @@ func _handle_selected():
             _tileMap.toggle_selected_overlay(tile_pos)
             _path.append(tile_pos)
     else:
-        for i in range(index + 1, _path.size()):
-            _tileMap.toggle_selected_overlay(_path[i])
-            
-        _path = _path.slice(0, index + 1)
+        _path = _reset_path_slice(_tileMap, _path, index + 1)
 
     if(Input.is_action_just_pressed("mouse_right")):
         _toggle_selected()
-        
-        for i in range(1, _path.size()):
-            _tileMap.toggle_selected_overlay(_path[i])
-            
-        _path = [_player_pos]
+        _path = _reset_path_slice(_tileMap, _path, 1)
     elif Input.is_action_just_pressed("mouse_left"):
         _toggle_selected()
-        
-        if tile_pos == _player_pos:
-            _path = [_player_pos]
-        else:
-            for i in range(0, _path.size()):
-                _tileMap.toggle_selected_overlay(_path[i])
-                
+
+        if _path.size() > 1:
             get_parent().set_path(_path)
-            
+
+            _path = _reset_path_slice(_tileMap, _path, 0)
+
             return get_parent().GamePhase.PLAYER_ANIM
 
     return get_parent().GamePhase.PLAYER
+
+func _reset_path_slice(tileMap : TileMap, path : Array, start : int):
+    for i in range(start, path.size()):
+        tileMap.toggle_selected_overlay(path[i])
+
+    return path.slice(0, start)
