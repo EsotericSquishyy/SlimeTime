@@ -29,6 +29,8 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : No
     _enemyManager = enemyManager
 
     _currentPhase = GamePhase.PLAYER
+    await get_tree().physics_frame
+    await get_tree().physics_frame
     _phaseDict[_currentPhase].begin()
 
 func _process(delta):
