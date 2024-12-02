@@ -1,5 +1,8 @@
 extends Phase
 
+func init():
+    pass
+
 func begin():
     print("BEGIN ENEMY ANIM PHASE")
 

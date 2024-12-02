@@ -10,9 +10,11 @@ var _player : Node2D
 var _tileMap : TileMap
 var _path : Array[Vector2i]
 
-func begin():
+func init():
     _player = get_parent().get_player()
     _tileMap = get_parent().get_tileMap()
+
+func begin():
     _path = get_parent().get_move_path()
     
     _tileMap.set_unit(_path.front(), null)

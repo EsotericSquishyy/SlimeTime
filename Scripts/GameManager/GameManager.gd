@@ -28,10 +28,10 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : No
     _path = []
     _enemyManager = enemyManager
 
+    for key in _phaseDict:
+        _phaseDict[key].init()
+
     _currentPhase = GamePhase.PLAYER
-    await get_tree().physics_frame
-    await get_tree().physics_frame
-    _phaseDict[_currentPhase].begin()
 
 func _process(delta):
     _tileMap.update_cursor_pos()

@@ -2,6 +2,9 @@ extends Phase
 
 var enemies = []
 
+func init():
+    pass
+
 func begin():
     print("BEGIN ENEMY PHASE")
 
