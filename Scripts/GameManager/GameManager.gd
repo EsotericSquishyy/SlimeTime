@@ -32,6 +32,7 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : No
         _phaseDict[key].init()
 
     _currentPhase = GamePhase.PLAYER
+    _phaseDict[_currentPhase].begin()
 
 func _process(delta):
     _tileMap.update_cursor_pos()

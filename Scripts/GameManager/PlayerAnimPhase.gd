@@ -38,7 +38,7 @@ func _handle_move(delta):
     if _player.move(delta):
         _tileMap.set_unit(_path.front(), _player)
     
-        if(not _tileMap.is_slimed(_path.front())):
+        if not _tileMap.is_slimed(_path.front()):
             _tileMap.toggle_slimed(_path.front())
             _player.set_slime_count(_player.get_slime_count() - _tileMap.get_cost(_path.front()))
             

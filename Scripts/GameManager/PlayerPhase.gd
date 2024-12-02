@@ -14,14 +14,12 @@ var _player_pos : Vector2i
 func init():
     _tileMap = get_parent().get_tileMap()
     _player = get_parent().get_player()
-    _player_pos = _player.get_tile_pos()
-    _path = [_player_pos]
-    _tileMap.toggle_selected_overlay(_player_pos)
 
 func begin():
     _player_pos = _player.get_tile_pos()
     _path = [_player_pos]
     _tileMap.toggle_selected_overlay(_player_pos)
+    
     print("BEGIN PLAYER PHASE")
 
 func handle(_delta):
@@ -32,10 +30,14 @@ func handle(_delta):
             return _handle_selected()
 
 func end():
+    get_parent().set_path(_path)
+    _reset_path_slice(_tileMap, _path, 0)
+          
     print("END PLAYER PHASE")
 
 func _toggle_selected():
     _tileMap.toggle_overlay()
+    
     match _state:
         PlayerState.UNSELECTED:
             _state = PlayerState.SELECTED
@@ -66,16 +68,12 @@ func _handle_selected():
         _toggle_selected()
 
         if _path.size() > 1:
-            get_parent().set_path(_path)
-
-            _path = _reset_path_slice(_tileMap, _path, 0)
-
             return get_parent().GamePhase.PLAYER_ANIM
 
     return get_parent().GamePhase.PLAYER
 
-func _reset_path_slice(tileMap : TileMap, path : Array, start : int):
-    for i in range(start, path.size()):
+func _reset_path_slice(tileMap : TileMap, path : Array[Vector2i], end : int):
+    for i in range(end, path.size()):
         tileMap.toggle_selected_overlay(path[i])
 
-    return path.slice(0, start)
+    return path.slice(0, end)
