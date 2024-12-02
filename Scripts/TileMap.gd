@@ -84,10 +84,7 @@ func get_cursor_pos():
     return _cursor_pos
 
 func get_cursor_pos_global():
-    if(_tile_data[_cursor_pos]._is_half_tile):
-        return to_global(map_to_local(_cursor_pos) + _CURSOR_LOCAL_HALF_TILE_OFFSET)
-    else:
-        return to_global(map_to_local(_cursor_pos))
+    return map_to_global(_cursor_pos)
 
 func toggle_overlay():
     _over_hidden = !_over_hidden

@@ -65,3 +65,6 @@ func get_slime_count():
     
 func set_slime_count(count : int):
     _slime_count = count
+    
+func get_init_pos():
+    return _init_position
