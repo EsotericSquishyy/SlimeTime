@@ -40,7 +40,7 @@ layer_3/tile_data = PackedInt32Array()
 script = ExtResource("2_acm2g")
 
 [node name="Player" parent="." instance=ExtResource("4_3ejgp")]
-position = Vector2(48, 64)
+position = Vector2(0, 32)
 _init_position = Vector2i(1, 2)
 
 [node name="Cursor" parent="." instance=ExtResource("5_0upqt")]
