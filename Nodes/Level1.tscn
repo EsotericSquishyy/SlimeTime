@@ -44,7 +44,6 @@ position = Vector2(48, 64)
 _init_position = Vector2i(1, 2)
 
 [node name="Cursor" parent="." instance=ExtResource("5_0upqt")]
-y_sort_enabled = true
 
 [node name="GameManager" parent="." instance=ExtResource("6_j3icu")]
 

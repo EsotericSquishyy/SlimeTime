@@ -72,8 +72,8 @@ func _handle_selected():
 
     return get_parent().GamePhase.PLAYER
 
-func _reset_path_slice(tileMap : TileMap, path : Array[Vector2i], end : int):
-    for i in range(end, path.size()):
+func _reset_path_slice(tileMap : TileMap, path : Array[Vector2i], start : int):
+    for i in range(start, path.size()):
         tileMap.toggle_selected_overlay(path[i])
 
-    return path.slice(0, end)
+    return path.slice(0, start)
