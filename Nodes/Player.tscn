@@ -5,11 +5,13 @@
 
 [node name="Player" type="Node2D"]
 z_index = 2
+y_sort_enabled = true
 script = ExtResource("1_t2ii4")
 _init_slime_count = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = ExtResource("2_necju")
-animation = &"Moving_Upper_Right"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.182061
+offset = Vector2(0.5, 0)

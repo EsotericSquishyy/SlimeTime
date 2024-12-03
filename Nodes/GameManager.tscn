@@ -6,17 +6,17 @@
 [ext_resource type="Script" path="res://Scripts/GameManager/EnemyPhase.gd" id="4_lb6xi"]
 [ext_resource type="Script" path="res://Scripts/GameManager/EnemyAnimPhase.gd" id="5_ofnxe"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node"]
 script = ExtResource("1_hyffs")
 
-[node name="PlayerPhase" type="Node2D" parent="."]
+[node name="PlayerPhase" type="Node" parent="."]
 script = ExtResource("2_x24uv")
 
-[node name="PlayerAnimPhase" type="Node2D" parent="."]
+[node name="PlayerAnimPhase" type="Node" parent="."]
 script = ExtResource("3_nsr2p")
 
-[node name="EnemyPhase" type="Node2D" parent="."]
+[node name="EnemyPhase" type="Node" parent="."]
 script = ExtResource("4_lb6xi")
 
-[node name="EnemyAnimPhase" type="Node2D" parent="."]
+[node name="EnemyAnimPhase" type="Node" parent="."]
 script = ExtResource("5_ofnxe")
