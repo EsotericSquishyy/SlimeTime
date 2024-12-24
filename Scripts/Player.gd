@@ -4,32 +4,27 @@ const _ANIMATION_PLAYER_BIG = preload("res://Animations/Slime_Animations/Player_
 const _ANIMATION_PLAYER_NORMAL = preload("res://Animations/Slime_Animations/Player_Normal.tres")
 const _ANIMATION_PLAYER_SMALL = preload("res://Animations/Slime_Animations/Player_Small.tres")
 
-const _MOVE_SPEED = 2.0
-
-# Init vars
-@export var _init_slime_count : int
-@export var _init_position : Vector2i
-
 # Gameloop vars
-var _slime_count : int
+@export var _slime_count : int
 
+# Movement vars
+@export var _move_speed : float
 var _tileMap : TileMap
 var _completion : float
 var _prev_position : Vector2i
-var _curr_position : Vector2i
+@export var _curr_position : Vector2i
 var _next_position : Vector2i
 
 func init(tileMap : TileMap):
-    _slime_count = _init_slime_count;
 
     _tileMap = tileMap
-    _curr_position = _init_position
-    self.position = _tileMap.map_to_global(_init_position)
-    _tileMap.set_unit(_init_position, self)
+    self.position = _tileMap.map_to_global(_curr_position)
+    _tileMap.set_unit(_curr_position, self)
     
-    if not _tileMap.is_slimed(_init_position):
-        _tileMap.toggle_slimed(_init_position)
+    if not _tileMap.is_slimed(_curr_position):
+        _tileMap.toggle_slimed(_curr_position)
 
+# Movement functions
 func begin_move(next_position : Vector2i):
     _completion = 0
     _prev_position = _curr_position
@@ -37,7 +32,7 @@ func begin_move(next_position : Vector2i):
     set_animation()
 
 func move(delta):
-    _completion += _MOVE_SPEED * delta
+    _completion += _move_speed * delta
     
     if _completion >= 1.0:
         _curr_position = _next_position
@@ -62,7 +57,8 @@ func set_animation():
         $AnimatedSprite2D.play("Moving_Upper_Right")
     else:
         $AnimatedSprite2D.play("Idle")
-        
+
+# Helper functions  
 func get_slime_count():
     return _slime_count
     

@@ -26,10 +26,12 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : No
     _player = player
     _cursor = cursor
     _path = []
-    _enemyManager = enemyManager
 
     for key in _phaseDict:
         _phaseDict[key].init()
+        
+    _enemyManager = enemyManager
+    _enemyManager.init(_tileMap, _player);
 
     _currentPhase = GamePhase.PLAYER
     _phaseDict[_currentPhase].begin()
@@ -56,9 +58,3 @@ func set_path(path):
 
 func get_move_path():
     return _path
-
-func get_enemy_dict():
-    pass
-
-
-

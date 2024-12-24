@@ -7,7 +7,6 @@
 z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_t2ii4")
-_init_slime_count = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

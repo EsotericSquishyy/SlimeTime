@@ -103,6 +103,9 @@ func toggle_slimed(curr : Vector2i):
 func is_slimed(curr : Vector2i):
     return _tile_data[curr].is_slimed()
  
+func is_tile(curr : Vector2i):
+    return _tile_data.has(curr)
+
 func is_crossable(curr : Vector2i):
     return _tile_data[curr].is_crossable()
     
@@ -115,8 +118,11 @@ func get_unit(curr : Vector2i):
 func set_unit(curr : Vector2i, unit : Node2D):
     _tile_data[curr].set_unit(unit)
 
+func euclidean_distance(vec1 : Vector2i, vec2 : Vector2i):
+    return abs(vec1.x - vec2.x) + abs(vec1.y - vec2.y)
+
 func is_adjacent(vec1 : Vector2i, vec2 : Vector2i):
-    return abs(vec1.x - vec2.x) + abs(vec1.y - vec2.y) == 1
+    return euclidean_distance(vec1, vec2) == 1
 
 func map_to_global(curr : Vector2i):
     if(_tile_data[curr]._is_half_tile):
