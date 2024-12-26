@@ -28,51 +28,59 @@ func init():
     _tileMap.set_unit(_curr_position, self)
 
 # Path generation functions
-var _visited = {}
-var _paths = []
-var _path = []
-var _curr_score : int
+var _to_from : Dictionary
+var _path : Array[Vector2i]
 
 func generate_paths():
+    # Initialization       
+    _to_from = {_curr_position: null}
+    _path = []
+
+    # BFS pathfinding algorithm
+    var queue = [_curr_position]
+
+    for i in range(0, _num_moves):
+        for j in range(0, queue.size()):
+            var from = queue.pop_front()
+
+            var tos = [
+                Vector2i(from.x - 1, from.y), Vector2i(from.x + 1, from.y), 
+                Vector2i(from.x, from.y - 1), Vector2i(from.x, from.y + 1)
+            ]
+            randomize()
+            tos.shuffle()
+
+            for to in tos:
+                if _tileMap.is_tile(to) and not _to_from.has(to) and is_crossable(to):
+                    queue.append(to)
+                    _to_from[to] = from
+                    
+    # Path scoring
+    var _curr_score = 0
     if _choose_lowest_scoring_path:
-        _curr_score = 2147483647 # IG?
+        _curr_score = 2147483647 # sure... why not
     else:
         _curr_score = -2147483648
+    
+    var end = _curr_position
+    
+    for to in _to_from.keys():
+        var score = scorePath(to)
         
-    _visited = {}
-    _paths.append(_curr_position)
-    _generate_path(0)
+        if (_choose_lowest_scoring_path and score < _curr_score) or (not _choose_lowest_scoring_path and score > _curr_score):
+            _curr_score = score
+            end = to
+            
+    # Path reconstruction
+    _path.append(end)
     
-func _generate_path(depth : int):
-    var to = _paths.back()
-    
-    if not (depth <= _num_moves and _tileMap.is_tile(to) and is_crossable(to)):
-        _paths.pop_back()
-        return
-    
-    _visited[to] = true
-    
-    var score = scorePath()
-    if (_choose_lowest_scoring_path and score < _curr_score) or (not _choose_lowest_scoring_path and score > _curr_score):
-        _path = _paths.duplicate()
-        _curr_score = score
-    
-    _paths.append(Vector2i(to.x - 1, to.y))
-    _generate_path(depth + 1)
-    
-    _paths.append(Vector2i(to.x + 1, to.y))
-    _generate_path(depth + 1)
-    
-    _paths.append(Vector2i(to.x, to.y - 1))
-    _generate_path(depth + 1)
-    
-    _paths.append(Vector2i(to.x, to.y + 1))
-    _generate_path(depth + 1)
-    
-    _paths.pop_back()
+    while _to_from[_path.back()] != null:
+        _path.append(_to_from[_path.back()])
+        
+    _path.reverse()
 
-func scorePath():
-    return _tileMap.euclidean_distance(_paths.back(), _player.get_tile_pos())
+func scorePath(to : Vector2i):
+    return _tileMap.euclidean_distance(to, _player.get_tile_pos())
 
 # Movement functions
 func begin_move(next_position : Vector2i):
@@ -116,7 +124,7 @@ func end_attack():
 
 # Helper functions
 func is_crossable(tile : Vector2i):
-    return not _visited.has(tile) and _tileMap.is_crossable(tile) and tile != _player.get_tile_pos()
+    return _tileMap.get_unit(tile) == null and _tileMap.is_crossable(tile)
     
 func get_move_path():
     return _path

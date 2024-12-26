@@ -15,7 +15,7 @@ func init():
     _tileMap = get_parent().get_tileMap()
 
 func begin():
-    _path = get_parent().get_move_path()
+    _path = get_parent().get_player_path()
     
     _tileMap.set_unit(_path.pop_front(), null)
     
