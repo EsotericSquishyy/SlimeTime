@@ -20,6 +20,7 @@ func begin():
     _tileMap.set_unit(_path.pop_front(), null)
     
     if _tileMap.get_unit(_path.front()) != null:
+        _player.begin_attack(_path.front())
         _state = PlayerAnimState.ATTACKING
     else:
         _state = PlayerAnimState.MOVING
@@ -50,7 +51,7 @@ func _handle_move(delta):
             _tileMap.set_unit(curr_pos, null)
             
             if _tileMap.get_unit(_path.front()) != null:
-                # TODO Begin attack method to start animation?
+                _player.begin_attack(_path.front())
                 _state = PlayerAnimState.ATTACKING
             else:
                 _player.begin_move(_path.front())
@@ -58,14 +59,14 @@ func _handle_move(delta):
     return get_parent().GamePhase.PLAYER_ANIM
     
 func _handle_attack(_delta):
-    # TODO wait for attack animation to finish
-    var enemy = _tileMap.get_unit(_path.front())
-    _player.set_slime_count(_player.get_slime_count() - enemy.get_health() + enemy.get_slime())
-    _tileMap.set_unit(_path.front(), null)
-    enemy.queue_free() # Death animation???
-    
-    _state = PlayerAnimState.MOVING
-    _player.begin_move(_path.front())
+    if _player.attack():
+        var enemy = _tileMap.get_unit(_path.front())
+        _player.set_slime_count(_player.get_slime_count() - enemy.get_health() + enemy.get_slime())
+        _tileMap.set_unit(_path.front(), null)
+        enemy.queue_free() # Death animation???
+        
+        _state = PlayerAnimState.MOVING
+        _player.begin_move(_path.front())
     
     return get_parent().GamePhase.PLAYER_ANIM
 

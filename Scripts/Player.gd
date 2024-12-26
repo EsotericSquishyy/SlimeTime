@@ -15,8 +15,10 @@ var _prev_position : Vector2i
 @export var _curr_position : Vector2i
 var _next_position : Vector2i
 
-func init(tileMap : TileMap):
+# Attack vars
+var _attacking : bool
 
+func init(tileMap : TileMap):
     _tileMap = tileMap
     self.position = _tileMap.map_to_global(_curr_position)
     _tileMap.set_unit(_curr_position, self)
@@ -29,22 +31,22 @@ func begin_move(next_position : Vector2i):
     _completion = 0
     _prev_position = _curr_position
     _next_position = next_position
-    set_animation()
+    _set_movement_animation()
 
-func move(delta):
-    _completion += _move_speed * delta
+func move(_delta):
+    _completion += _move_speed * _delta
     
     if _completion >= 1.0:
         _curr_position = _next_position
         self.position = _tileMap.map_to_global(_next_position)
-        set_animation()
+        _set_movement_animation()
         return true
     
     self.position = _tileMap.map_to_global(_prev_position).lerp(_tileMap.map_to_global(_next_position), _completion)
     
     return false
 
-func set_animation():
+func _set_movement_animation():
     var diff = _next_position - _curr_position
     
     if diff.x > 0:
@@ -58,6 +60,17 @@ func set_animation():
     else:
         $AnimatedSprite2D.play("Idle")
 
+# Attack functions
+func begin_attack(next_position : Vector2i):
+    _attacking = true
+    # TODO start attack animation
+
+func attack():
+    return true # TODO replace line with return not _attacking 
+    
+func end_attack():
+    _attacking = false
+    
 # Helper functions  
 func get_slime_count():
     return _slime_count
