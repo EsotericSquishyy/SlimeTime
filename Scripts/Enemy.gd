@@ -116,7 +116,7 @@ func end_attack():
 
 # Helper functions
 func is_crossable(tile : Vector2i):
-    return _visited.has(tile) and _tileMap.is_crossable(tile) and tile != _player.get_tile_pos()
+    return not _visited.has(tile) and _tileMap.is_crossable(tile) and tile != _player.get_tile_pos()
     
 func get_move_path():
     return _path
