@@ -47,7 +47,7 @@ z_index = 1
 script = ExtResource("1_5vgbv")
 _slime = 5
 _num_moves = 4
-_move_speed = 1.0
+_move_speed = 4.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -2)

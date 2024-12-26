@@ -80,6 +80,12 @@ func generate_paths():
     _path.reverse()
 
 func scorePath(to : Vector2i):
+    if _tileMap.get_unit(to) != null:
+        if _choose_lowest_scoring_path:
+            return 2147483647
+        else:
+            return -2147483648
+    
     return _tileMap.euclidean_distance(to, _player.get_tile_pos())
 
 # Movement functions
@@ -106,7 +112,7 @@ func _set_movement_animation():
     pass
     
 # Attack functions
-func can_attack(next_position : Vector2i):
+func can_attack():
     return false
 
 func begin_attack():
@@ -124,7 +130,7 @@ func end_attack():
 
 # Helper functions
 func is_crossable(tile : Vector2i):
-    return _tileMap.get_unit(tile) == null and _tileMap.is_crossable(tile)
+    return _tileMap.is_crossable(tile)
     
 func get_move_path():
     return _path

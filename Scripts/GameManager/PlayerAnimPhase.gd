@@ -23,8 +23,8 @@ func begin():
         _player.begin_attack(_path.front())
         _state = PlayerAnimState.ATTACKING
     else:
-        _state = PlayerAnimState.MOVING
         _player.begin_move(_path.front())
+        _state = PlayerAnimState.MOVING
         
     print("BEGIN PLAYER ANIM PHASE")
 
