@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://5wov51eu5ovb"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_5vgbv"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Bunny.gd" id="1_k1j6e"]
 [ext_resource type="SpriteFrames" uid="uid://dlj7t42nd5fjm" path="res://Animations/Bunny_Animations/Bunny.tres" id="2_hf2kx"]
 
 [sub_resource type="Animation" id="Animation_up4w4"]
@@ -44,7 +44,7 @@ _data = {
 
 [node name="Bunny" type="Node2D"]
 z_index = 1
-script = ExtResource("1_5vgbv")
+script = ExtResource("1_k1j6e")
 _slime = 5
 _num_moves = 4
 _move_speed = 4.0

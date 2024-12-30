@@ -37,7 +37,9 @@ func handle_next_enemy():
     enemy.generate_paths()
     var path = enemy.get_move_path()
     if path.size() > 1:
-        _tileMap.set_unit(path.pop_front(), null)
+        _tileMap.set_unit(path.front(), null)
+    
+    path.pop_front()
     
     if enemy.can_attack():
         enemy.begin_attack()
@@ -46,7 +48,7 @@ func handle_next_enemy():
     else:
         _state = EnemyAnimState.MOVING
                 
-        if path.size() > 1:
+        if not path.is_empty():
             enemy.begin_move(path.front())
         else:
             _enemy_manager.next_enemy() # May cause stack overflow if a bunch of enemies don't attack or move, see method
