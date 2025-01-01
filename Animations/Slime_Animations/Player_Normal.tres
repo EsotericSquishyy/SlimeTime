@@ -147,6 +147,11 @@ region = Rect2(192, 0, 32, 32)
 
 [resource]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attacking_Bottom_Left",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kqjb6")
@@ -248,7 +253,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_w6wmk")
 }],
 "loop": true,
-"name": &"Moving_Upper_Left",
+"name": &"Moving_Top_Left",
 "speed": 14.0
 }, {
 "frames": [{
@@ -274,6 +279,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_54j57")
 }],
 "loop": true,
-"name": &"Moving_Upper_Right",
+"name": &"Moving_Top_Right",
 "speed": 14.0
 }]

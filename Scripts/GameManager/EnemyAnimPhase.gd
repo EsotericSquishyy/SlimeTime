@@ -87,7 +87,10 @@ func _handle_attack(_delta):
     
         var path = enemy.get_move_path()
         
-        if path.is_empty():
+        if enemy.can_attack():
+            enemy.begin_attack()
+            _state = EnemyAnimState.ATTACKING
+        elif path.is_empty():
             _enemy_manager.next_enemy()
                 
             if _enemy_manager.get_enemy() == null:

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://35whdovamw5y" path="res://Nodes/Cursor.tscn" id="5_0upqt"]
 [ext_resource type="PackedScene" uid="uid://cth2lrajjgets" path="res://Nodes/GameManager.tscn" id="6_j3icu"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="7_7kifw"]
-[ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://Nodes/Bunny.tscn" id="8_m1abf"]
+[ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://Nodes/Enemies/Bunny.tscn" id="8_m1abf"]
 [ext_resource type="Script" path="res://Scripts/Label.gd" id="9_8gi6d"]
 
 [node name="Level1" type="Node2D"]
