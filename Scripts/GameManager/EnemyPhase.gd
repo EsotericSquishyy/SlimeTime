@@ -1,15 +1,17 @@
 extends Phase
 
-var enemies = []
+var _enemy_manager : Node
 
 func init():
-    pass
+    _enemy_manager = get_parent().get_enemy_manager()
 
 func begin():
+    _enemy_manager.load_enemies()
+    
     print("BEGIN ENEMY PHASE")
 
 func handle(_delta):
-    return get_parent().GamePhase.ENEMY
+    return get_parent().GamePhase.ENEMY_ANIM
 
 func end():
     print("END ENEMY PHASE")

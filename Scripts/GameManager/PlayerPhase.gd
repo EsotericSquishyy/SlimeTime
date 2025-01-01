@@ -30,7 +30,7 @@ func handle(_delta):
             return _handle_selected()
 
 func end():
-    get_parent().set_path(_path)
+    get_parent().set_player_path(_path)
     _reset_path_slice(_tileMap, _path, 0)
           
     print("END PLAYER PHASE")

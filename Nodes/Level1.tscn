@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://35whdovamw5y" path="res://Nodes/Cursor.tscn" id="5_0upqt"]
 [ext_resource type="PackedScene" uid="uid://cth2lrajjgets" path="res://Nodes/GameManager.tscn" id="6_j3icu"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="7_7kifw"]
-[ext_resource type="Resource" uid="uid://lyisa6tiyrtb" path="res://Nodes/Resources/Bunny.tres" id="8_exirm"]
+[ext_resource type="PackedScene" uid="uid://5wov51eu5ovb" path="res://Nodes/Enemies/Bunny.tscn" id="8_m1abf"]
 [ext_resource type="Script" path="res://Scripts/Label.gd" id="9_8gi6d"]
 
 [node name="Level1" type="Node2D"]
@@ -41,7 +41,9 @@ script = ExtResource("2_acm2g")
 
 [node name="Player" parent="." instance=ExtResource("4_3ejgp")]
 position = Vector2(0, 32)
-_init_position = Vector2i(1, 2)
+_slime_count = 50
+_move_speed = 2.0
+_curr_position = Vector2i(1, 2)
 
 [node name="Cursor" parent="." instance=ExtResource("5_0upqt")]
 
@@ -49,9 +51,11 @@ _init_position = Vector2i(1, 2)
 
 [node name="EnemyManager" type="Node" parent="."]
 script = ExtResource("7_7kifw")
-enemy_datas = {
-Vector2i(32, 16): ExtResource("8_exirm")
-}
+
+[node name="Bunny" parent="EnemyManager" instance=ExtResource("8_m1abf")]
+_curr_position = Vector2i(-1, 0)
+
+[node name="Bunny2" parent="EnemyManager" instance=ExtResource("8_m1abf")]
 
 [node name="Label" type="Label" parent="."]
 z_index = 3

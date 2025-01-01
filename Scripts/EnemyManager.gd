@@ -1,16 +1,37 @@
 extends Node
 
-const ENEMY_PREFAB = preload("res://Nodes/Enemy.tscn")
+var _tileMap : TileMap
+var _player : Node2D
+var _enemy_anim_phase : Phase
+var _enemies : Array[Node]
 
-@export var enemy_datas : Dictionary
-var enemies = []
+func init(tileMap : TileMap, player : Node2D, enemy_anim_phase : Phase):
+    _tileMap = tileMap
+    _player = player
+    _enemy_anim_phase = enemy_anim_phase
+    
+    for enemy in get_children():
+        enemy.init()
 
-func _ready():
-    # Spawns in enemies based on EnemyData provided
-    for key in enemy_datas.keys():
-        var value = enemy_datas[key]
-        var e = ENEMY_PREFAB.instantiate()
-        add_child(e)
-        e.position = key
-        e.init(value)
-        enemies.append(e)
+func load_enemies():
+    _enemies = get_children().duplicate()
+    _enemies.reverse()
+    
+func get_enemy():
+    if _enemies.is_empty():
+        return null
+    
+    return _enemies.back()
+    
+func next_enemy():
+    if not _enemies.is_empty():
+        _enemies.pop_back()
+        
+    _enemy_anim_phase.handle_next_enemy()
+
+func get_tileMap():
+    return _tileMap
+
+func get_player():
+    return _player
+    

@@ -3,8 +3,8 @@ extends Node
 var _tileMap : TileMap
 var _player : Node2D
 var _cursor : Node2D
-var _path : Array[Vector2i]
-var _enemyManager : Node
+var _player_path : Array[Vector2i]
+var _enemy_manager : Node
 
 enum GamePhase {
     PLAYER,
@@ -21,12 +21,14 @@ var _currentPhase : GamePhase
     GamePhase.ENEMY_ANIM: $EnemyAnimPhase
 }
 
-func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemyManager : Node):
+func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemy_manager : Node):
     _tileMap = tileMap
     _player = player
     _cursor = cursor
-    _path = []
-    _enemyManager = enemyManager
+    _player_path = []
+    
+    _enemy_manager = enemy_manager
+    _enemy_manager.init(_tileMap, _player, _phaseDict[GamePhase.ENEMY_ANIM]);
 
     for key in _phaseDict:
         _phaseDict[key].init()
@@ -51,14 +53,11 @@ func get_tileMap():
 func get_player():
     return _player
 
-func set_path(path):
-    _path = path
+func set_player_path(player_path):
+    _player_path = player_path
 
-func get_move_path():
-    return _path
-
-func get_enemy_dict():
-    pass
-
-
-
+func get_player_path():
+    return _player_path
+    
+func get_enemy_manager():
+    return _enemy_manager
