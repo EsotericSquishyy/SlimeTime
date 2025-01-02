@@ -70,6 +70,8 @@ func _handle_move(delta):
             _state = EnemyAnimState.ATTACKING
         else:
             if path.is_empty():
+                _enemy_manager.get_enemy()._set_movement_animation()
+                
                 _enemy_manager.next_enemy()
                 
                 if _enemy_manager.get_enemy() == null:
@@ -79,10 +81,10 @@ func _handle_move(delta):
     
     return get_parent().GamePhase.ENEMY_ANIM
     
-func _handle_attack(_delta):
+func _handle_attack(delta):
     var enemy = _enemy_manager.get_enemy()
     
-    if enemy.attack():
+    if enemy.attack(delta):
         _player.set_slime_count(_player.get_slime_count() - enemy.get_damage())
     
         var path = enemy.get_move_path()

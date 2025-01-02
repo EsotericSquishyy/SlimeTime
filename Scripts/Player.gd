@@ -31,22 +31,25 @@ func begin_move(next_position : Vector2i):
     _completion = 0
     _prev_position = _curr_position
     _next_position = next_position
-    _set_movement_animation()
+    
+    set_movement_animation()
 
-func move(_delta):
-    _completion += _move_speed * _delta
+func move(delta):
+    _completion += _move_speed * delta
     
     if _completion >= 1.0:
         _curr_position = _next_position
         self.position = _tileMap.map_to_global(_next_position)
-        _set_movement_animation()
+
         return true
     
     self.position = _tileMap.map_to_global(_prev_position).lerp(_tileMap.map_to_global(_next_position), _completion)
     
     return false
 
-func _set_movement_animation():
+func set_movement_animation():
+    $AnimationPlayer.stop() 
+    
     var diff = _next_position - _curr_position
     
     if diff.x > 0:
@@ -63,10 +66,22 @@ func _set_movement_animation():
 # Attack functions
 func begin_attack(next_position : Vector2i):
     _attacking = true
-    # TODO start attack animation
+    
+    $AnimatedSprite2D.stop()
+    
+    var diff = next_position - _curr_position
+    
+    if diff.x > 0:
+        $AnimationPlayer.play("Attacking_Bottom_Right")
+    elif diff.x < 0:
+        $AnimationPlayer.play("Attacking_Top_Left")
+    elif diff.y > 0:
+        $AnimationPlayer.play("Attacking_Bottom_Left")
+    elif diff.y < 0:
+        $AnimationPlayer.play("Attacking_Top_Right")
 
-func attack():
-    return true # TODO replace line with return not _attacking 
+func attack(delta):
+    return not _attacking
     
 func end_attack():
     _attacking = false
