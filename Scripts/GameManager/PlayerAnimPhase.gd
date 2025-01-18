@@ -59,9 +59,11 @@ func _handle_move(delta):
 func _handle_attack(delta):
     if _player.attack(delta):
         var enemy = _tileMap.get_unit(_path.front())
+        
         _player.set_slime_count(_player.get_slime_count() - enemy.get_health() + enemy.get_slime())
+        
         _tileMap.set_unit(_path.front(), null)
-        enemy.die() # Enemy death animation???
+        enemy.die()
         
         _state = PlayerAnimState.MOVING
         _player.begin_move(_path.front())
