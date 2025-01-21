@@ -7,4 +7,4 @@ func init(player : Node2D):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-    text = str(_player.get_slime_count())
+    text = _player.get_slime_display()

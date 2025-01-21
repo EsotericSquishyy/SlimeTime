@@ -70,12 +70,13 @@ func toggle_slimed():
 
 func is_slimed():
     return _slimed
-    
+
 func is_crossable():
     return _crossable
 
 func get_cost():
-    return _cost
+    var tileCost = 0 if _slimed else _cost
+    return tileCost
 
 func get_unit():
     return _unit

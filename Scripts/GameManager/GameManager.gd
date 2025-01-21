@@ -26,7 +26,7 @@ func init(tileMap : TileMap, player : Node2D, cursor : Node2D, enemy_manager : N
     _player = player
     _cursor = cursor
     _player_path = []
-    
+
     _enemy_manager = enemy_manager
     _enemy_manager.init(_tileMap, _player, _phaseDict[GamePhase.ENEMY_ANIM]);
 
