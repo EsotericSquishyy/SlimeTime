@@ -19,7 +19,7 @@ func begin():
     _player_pos = _player.get_tile_pos()
     _path = [_player_pos]
     _tileMap.toggle_selected_overlay(_player_pos)
-    
+
     print("BEGIN PLAYER PHASE")
 
 func handle(_delta):
@@ -32,12 +32,13 @@ func handle(_delta):
 func end():
     get_parent().set_player_path(_path)
     _reset_path_slice(_tileMap, _path, 0)
-          
+    _player.reset_selected_cost() # For some reason this is redundant
+
     print("END PLAYER PHASE")
 
 func _toggle_selected():
     _tileMap.toggle_overlay()
-    
+
     match _state:
         PlayerState.UNSELECTED:
             _state = PlayerState.SELECTED
@@ -57,6 +58,7 @@ func _handle_selected():
     if index == -1:
         if _tileMap.is_crossable(tile_pos) and _tileMap.is_adjacent(tile_pos, _path[-1]):
             _tileMap.toggle_selected_overlay(tile_pos)
+            _player.inc_selected_cost(_tileMap.get_cost(tile_pos))
             _path.append(tile_pos)
     else:
         _path = _reset_path_slice(_tileMap, _path, index + 1)
@@ -75,5 +77,6 @@ func _handle_selected():
 func _reset_path_slice(tileMap : TileMap, path : Array[Vector2i], start : int):
     for i in range(start, path.size()):
         tileMap.toggle_selected_overlay(path[i])
+        _player.inc_selected_cost(- tileMap.get_cost(path[i]))
 
     return path.slice(0, start)
