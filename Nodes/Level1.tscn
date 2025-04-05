@@ -40,7 +40,7 @@ script = ExtResource("2_acm2g")
 
 [node name="Player" parent="." instance=ExtResource("4_3ejgp")]
 position = Vector2(0, 32)
-_slime_count = 50
+_slime_count = 4
 _move_speed = 2.0
 _curr_position = Vector2i(1, 2)
 
